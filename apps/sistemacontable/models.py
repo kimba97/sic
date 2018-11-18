@@ -17,12 +17,13 @@ class Cuenta(models.Model):
     def __str__(self):
         return '%s' %(self.nombre)
 
+
 class Partida(models.Model):
     fecha = models.DateField()
-    cuenta = models.ForeignKey(Cuenta)
+    cuenta = models.ManyToManyField(Cuenta)
     descripcion = models.TextField(max_length=500)
-    monto = models.FloatField()
-
+    def get_cuenta(self):
+        return "\n".join([i.id for i in self.cuenta.all()])
     class Meta:
         verbose_name='Partida'
         verbose_name_plural='Partidas'
@@ -46,5 +47,15 @@ class Catalogo(models.Model):
     class Meta:
         verbose_name='Catalogo'
         verbose_name_plural='Catalogos'
+    def __str__(self):
+        return '%s' %(self.id)
+
+class Transaccion(models.Model):
+    partida = models.ForeignKey(Partida)
+    descripcion = models.TextField(max_length=500)
+    monto = models.FloatField()
+    class Meta:
+        verbose_name='Transaccion'
+        verbose_name_plural='Transacciones'
     def __str__(self):
         return '%s' %(self.id)

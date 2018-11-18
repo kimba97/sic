@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block Titulo %}Inicio{% endblock Titulo %}</title>
+
+	{% block META %}
+		<meta charset="UTF-8">
+  		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	{% endblock META %}
+
+	{% block EstilosCSS %}
+		<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+	{% endblock EstilosCSS %}
+
+	{% block JavaScript %}
+		<script src="{% static "js/jquery.js" %}"></script>
+		<script src="{% static "js/bootstrap.js" %}"></script>
+	{% endblock JavaScript %}
+</head>
+<body>
+
+	{% block Navegacion %}
+
+		<div align="center">
+            <h1>BIENVENIDO A SU SISTEMA CONTABLE</h1><br>
+		</div>
+
+
+
+
+	{% endblock Navegacion %}
+
+	{% block Contenido %}
+    <div align="center">
+        <br><br><button onclick="location.href='http:/admin'" class="btn btn-primary">inicie sesion</button>
+    </div>
+
+
+	{% endblock Contenido %}
+
+	{% block PiePaginas %}
+
+	{% endblock PiePaginas %}
+
+</body>
+</html>
