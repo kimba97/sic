@@ -345,28 +345,21 @@ def saldoxMensual(request):
         cuentitas_nombre = c.nombre
         for c in cuentitas:
             parti = Partida.objects.all()
-            for p in parti:
-                parti_fecha = p.fecha
-                i = date(2018,11,01)
-                f = date(2018,11,30)
-                if i <= p.fecha <= f:
-                    #pc= Cuenta.objects.get(nombre=c.nombre)
-                    #if pc.codigo == c.codigo:
-                    c.total = c.debe- c.haber
-                    if c.total < 0:
-                        c.haber = c.total
-                        c.debe =0
-                        c.save()
-                    if c.total > 0:
-                        c.debe = c.total
-                        c.haber = 0
-                        c.save()
-                    if c.total == 0:
-                        c.debe = 0
-                        c.haber = 0
-                        c.save()
-                else:
-                    c.total = 0.00
+            #pc= Cuenta.objects.get(nombre=c.nombre)
+            #if pc.codigo == c.codigo:
+            c.total = c.debe- c.haber
+            if c.total < 0:
+                c.haber = c.total
+                c.debe =0
+                c.save()
+            if c.total > 0:
+                c.debe = c.total
+                c.haber = 0
+                c.save()
+            if c.total == 0:
+                c.debe = 0
+                c.haber = 0
+                c.save()
         context={
         "cuentitas": cuentitas,
         "cuentitas_codigo": cuentitas_codigo,
