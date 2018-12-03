@@ -1,0 +1,32 @@
+{% extends "Base/base.html" %}
+
+{% block Contenido %}
+<div class="col-md-8 col-md-offset-2 tex">
+	<div class="col-md-8">
+	</div>
+
+	<title>Libros</title>
+	<h1>Catalogo de cuentas</h1> 
+	<table>
+		<table id="aux" class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Nombre</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+					{%for c in cuentitas%}
+					{% csrf_token %}
+						<tr>
+							<td><br><label> {{c.codigo}}</label></td>
+							<td><br><label> {{c.nombre}}</label></td>
+
+					{%endfor%}
+	</table>
+
+								
+										
+				
+{% endblock Contenido %}

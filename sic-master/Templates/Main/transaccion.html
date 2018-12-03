@@ -1,0 +1,147 @@
+{% extends "Base/base.html" %}
+
+{% block Contenido %}
+<div class="col-md-8 col-md-offset-2 tex">
+	<div class="col-md-8">
+</div>
+	<div class="col-md-7 col-sm-offset-0 col-sm-6 col-xs-offset-1 col-xs-10">
+		<h3>Partida Diario</h3>
+            <form class="form-goup" method="GET">
+                <div class="form-group">
+                    <label><b>Buscar Partida por id: &nbsp; &nbsp;</b></label>
+                    <input type="text" class="form-control" name="q" placeholder="Escriba el id y presione enter">
+                </div>
+            </form>
+		<div class="contact-form">
+
+			<form class="form-group" id="form-group" role="form" method="POST" nctype="multipart/form-data">
+                {% for Partida in partida%}
+                {% csrf_token %}
+                <br><label> Partida: </label> <input type="text" class="form-control" name="par" value="{{Partida.id}}" id="" readonly><input type="text" class="form-control" name="par2" value="{{Partida.fecha}}" id="" readonly>
+                {%endfor%}
+                <br><label>Descripcion: </label> <input type="text" class="form-control" name="descri" id="" >
+                <br><label>Monto: </label> <input type="text" class="form-control" name="monto">
+                <!--CARGAR-->
+                <br><label>Cargar en: </label>
+                <script type="text/javascript">
+                function mostrar6(){document.getElementById('oculto').style.display = 'block';
+                document.getElementById('boton1').style.display = 'none';}
+                </script>
+                <script type="text/javascript">
+                function mostrar7(){document.getElementById('oculto2').style.display = 'block';
+                document.getElementById('boton1').style.display = 'none';}
+                </script>
+                <script type="text/javascript">
+                function mostrar8(){document.getElementById('oculto3').style.display = 'block';
+                document.getElementById('boton1').style.display = 'none';}
+                </script>
+                <script type="text/javascript">
+                function mostrar9(){document.getElementById('oculto4').style.display = 'block';
+                document.getElementById('boton1').style.display = 'none';}
+                </script>
+                </script>
+                <script type="text/javascript">
+                function mostrar10(){document.getElementById('oculto5').style.display = 'block';
+                document.getElementById('boton1').style.display = 'none';}
+                </script>
+                <div id="boton1">
+                <br><input type="button" value="Cargar en 1 cuenta" onclick="mostrar6()">
+                <input type="button" value="Cargar en 2 cuentas" onclick="mostrar7()">
+                <input type="button" value="Cargar en 3 cuentas" onclick="mostrar8()">
+                <input type="button" value="Cargar en 4 cuentas" onclick="mostrar9()">
+                <input type="button" value="Cargar en 5 cuentas" onclick="mostrar10()">
+                </div>
+                <div id="oculto" style='display:none;'>
+                <br><input type="text" class="form-control" name="carga1" placeholder="Codigo de Cuenta"> <input type="text" class="form-control" name="mCargar1" placeholder="monto">
+                </div>
+                <div id="oculto2" style='display:none;'>
+                <br><input type="text" class="form-control" name="carga2" placeholder="Codigo de Cuenta"> <input type="text" class="form-control" name="mCargar2" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga3" placeholder="Codigo de Cuenta 2"> <input type="text" class="form-control" name="mCargar3" placeholder="monto">
+                </div>
+                <div id="oculto3" style='display:none;'>
+                <br><input type="text" class="form-control" name="carga4" placeholder="Codigo de Cuenta"> <input type="text" class="form-control" name="mCargar4" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga5" placeholder="Codigo de Cuenta 2"> <input type="text" class="form-control" name="mCargar5" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga6" placeholder="Codigo de Cuenta 3"> <input type="text" class="form-control" name="mCargar6" placeholder="monto">
+                </div>
+                <div id="oculto4" style='display:none;'>
+                <br><input type="text" class="form-control" name="carga7" placeholder="Codigo de Cuenta"> <input type="text" class="form-control" name="mCargar7" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga8" placeholder="Codigo de Cuenta 2"> <input type="text" class="form-control" name="mCargar8" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga9" placeholder="Codigo de Cuenta 3"> <input type="text" class="form-control" name="mCargar9" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga10" placeholder="Codigo de Cuenta 4"> <input type="text" class="form-control" name="mCargar10" placeholder="monto">
+                </div>
+                <div id="oculto5" style='display:none;'>
+                <br><input type="text" class="form-control" name="carga11" placeholder="Codigo de Cuenta"> <input type="text" class="form-control" name="mCargar11" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga12" placeholder="Codigo de Cuenta 2"> <input type="text" class="form-control" name="mCargar12" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga13" placeholder="Codigo de Cuenta 3"> <input type="text" class="form-control" name="mCargar13" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga14" placeholder="Codigo de Cuenta 4"> <input type="text" class="form-control" name="mCargar14" placeholder="monto">
+                <br><input type="text" class="form-control" name="carga15" placeholder="Codigo de Cuenta 5"> <input type="text" class="form-control" name="mCargar15" placeholder="monto">
+                </div>
+                <!--ABONAR-->
+                <br><label>Abonar en: </label>
+                <div id="ocultado" style='display:none;'>
+                <br><input type="text" class="form-control" name="abo1" placeholder="Codigo de Cuenta"><input type="text" class="form-control" name="mAbo1" placeholder="monto">
+                </div>
+                <div id="ocultado2" style='display:none;'>
+                <br><input type="text" class="form-control" name="abo2" placeholder="Codigo de Cuenta"><input type="text" class="form-control" name="mAbo2" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo3" placeholder="Codigo de Cuenta 2"><input type="text" class="form-control" name="mAbo3" placeholder="monto">
+                </div>
+                <div id="ocultado3" style='display:none;'>
+                <br><input type="text" class="form-control" name="abo4" placeholder="Codigo de Cuenta"><input type="text" class="form-control" name="mAbo4" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo5" placeholder="Codigo de Cuenta 2"><input type="text" class="form-control" name="mAbo5" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo6" placeholder="Codigo de Cuenta 3"><input type="text" class="form-control" name="mAbo6" placeholder="monto">
+                </div>
+                <div id="ocultado4" style='display:none;'>
+                <br><input type="text" class="form-control" name="abo7" placeholder="Codigo de Cuenta"><input type="text" class="form-control" name="mAbo7" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo8" placeholder="Codigo de Cuenta 2"><input type="text" class="form-control" name="mAbo8" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo9" placeholder="Codigo de Cuenta 3"><input type="text" class="form-control" name="mAbo9" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo10" placeholder="Codigo de Cuenta 4"><input type="text" class="form-control" name="mAbo10" placeholder="monto">
+                </div>
+                <div id="ocultado5" style='display:none;'>
+                <br><input type="text" class="form-control" name="abo11" placeholder="Codigo de Cuenta"><input type="text" class="form-control" name="mAbo11" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo12" placeholder="Codigo de Cuenta 2"><input type="text" class="form-control" name="mAbo12" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo13" placeholder="Codigo de Cuenta 3"><input type="text" class="form-control" name="mAbo13" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo14" placeholder="Codigo de Cuenta 4"><input type="text" class="form-control" name="mAbo14" placeholder="monto">
+                <br><input type="text" class="form-control" name="abo15" placeholder="Codigo de Cuenta 5"><input type="text" class="form-control" name="mAbo15" placeholder="monto">
+                </div>
+                <script type="text/javascript">
+                function mostrar(){document.getElementById('ocultado').style.display = 'block';
+                document.getElementById('boton').style.display = 'none';}
+                </script>
+                <script type="text/javascript">
+                function mostrar2(){document.getElementById('ocultado2').style.display = 'block';
+                document.getElementById('boton').style.display = 'none';}
+                </script>
+                <script type="text/javascript">
+                function mostrar3(){document.getElementById('ocultado3').style.display = 'block';
+                document.getElementById('boton').style.display = 'none';}
+                </script>
+                <script type="text/javascript">
+                function mostrar4(){document.getElementById('ocultado4').style.display = 'block';
+                document.getElementById('boton').style.display = 'none';}
+                </script>
+                <script type="text/javascript">
+                function mostrar5(){document.getElementById('ocultado5').style.display = 'block';
+                document.getElementById('boton').style.display = 'none';}
+                </script>
+                <div id="boton">
+                <br><input type="button" value="Abonar en 1 cuenta" onclick="mostrar()">
+                <input type="button" value="Abonar en 2 cuentas" onclick="mostrar2()">
+                <input type="button" value="Abonar en 3 cuentas" onclick="mostrar3()">
+                <input type="button" value="Abonar en 4 cuentas" onclick="mostrar4()">
+                <input type="button" value="Abonar en 5 cuentas" onclick="mostrar5()">
+                </div>
+                <!--IVA-->
+                <br><label>Colocar IVA en: </label>
+                <br><input type="text" class="form-control" name="iva" placeholder="Codigo de Cuenta IVA"><input type="text" class="form-control" name="cargarIva" placeholder="Cargar"><input type="text" class="form-control" name="abonarIva" placeholder="Abonar">
+
+				<div class="col-md-12 text-center">
+					<br><button type="submit" id="boton" class="btn btn-primary">Guardar</button> <!--<button onclick="location.href='http:/transaccion'" class="btn btn-danger">Reiniciar</button>--->
+				</div>
+            </form>
+        </div>
+
+    </div>
+	</div>
+</div>
+
+{% endblock Contenido %}

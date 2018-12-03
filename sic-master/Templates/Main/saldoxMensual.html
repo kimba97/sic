@@ -1,0 +1,45 @@
+{% extends "Base/base.html" %}
+
+{% block Contenido %}
+
+
+<div class="col-md-8 col-md-offset-2 tex">
+	<div class="col-md-8">
+	</div>
+
+	<title>hdgdg</title>
+	<h1>Saldos por cuenta:</h1>
+	 <br>
+	<br>
+	<br>
+	
+	<table>
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Nombre</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+					{%for c in cuentitas%}
+					{% csrf_token %}
+						<tr>
+							<td><br><label> {{c.codigo}}</label></td>
+							<td><br><label> {{c.nombre}}</label></td>
+							<td><br><label> {{c.total}}</label></td>
+					{%endfor%}
+
+		</table>
+		<br>
+		<br>
+		<td style="text-align:left">
+		<button type="button" class="btn btn-primary" role = "link" onclick="window.location='/balanceComprobacion'">Balance de comprobacion</button><br>
+	</td>
+
+										
+										
+				
+{% endblock Contenido %}

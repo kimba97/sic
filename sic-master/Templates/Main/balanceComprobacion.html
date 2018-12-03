@@ -1,0 +1,56 @@
+{% extends "Base/base.html" %}
+
+{% block Contenido %}
+<script>
+		function imprimir(){
+			windos.print("balanceComprobacion");
+			document.write("Balance de Comprobacion")
+		}
+	</script>
+	<input type="button" value="Imprimir" onclick="window.print()">
+
+<div class="col-md-8 col-md-offset-2 tex">
+	<div class="col-md-8">
+	</div>
+
+	<title>Balance</title>
+	<br>
+	<br>
+	<h1 align="center">Balance de comprobacion</h1> 
+	<br>
+	<br>
+
+	<table border=".1" style="text-align:center" align="center">
+		<table border=".1" style="text-align:center" align="center">
+			<thead>
+				<tr>
+					<th style="text-align:center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Codigo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Haber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+					{%for c in cuentitas%}
+					{% csrf_token %}
+						<tr>
+							<td align="lerft"><label><br> {{c.codigo}}<br></label></td>
+							<td align="center"><label><br> {{c.nombre}}<br></label><br></td>
+							<td align="center"><label><br> {{c.debe}}<br></label><br></td>
+							<td align="center"><label><br> {{c.haber}}<br></label><br></td>
+							<td align="center"><label><br> {{c.total}}<br></label><br></td>
+
+					{%endfor%}
+						<tr>
+							<td><br><label>Total<td></td><td><br>{{totalDebe}}</td><td><br>{{totalHaber}}</td><td><br>{{total}}</td></label></td>
+						</tr>
+	</table>
+	<br>
+	<br>
+	<button type="button" class="btn btn-primary" role = "link" onclick="window.location='/estadoResultado'">Estado de Resultado</button>
+	</td>
+
+				
+{% endblock Contenido %}
